@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+         #
+#    By: soooh <soooh@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/21 21:52:21 by soooh             #+#    #+#              #
-#    Updated: 2021/06/21 22:18:08 by soooh            ###   ########.fr        #
+#    Updated: 2021/06/22 22:40:06 by soooh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,14 @@ NAME			= pipex
 
 CC				= gcc
 RM				= rm -rf
-SRCS			= ./srcs/pipex.c
+SRCS			= ./srcs/pipex.c\
+					./srcs/px_utils.c\
+					./srcs/ft_split.c
+
 OBJS			= $(SRCS:.c=.o)
 
 CFLAGS			= -Wall -Wextra -Werror
-#CFLAGS    		= -g3 -fsanitize=address
+CFLAGS    		= -g3 -fsanitize=address
 
 INC_LINK 		= -I./srcs
 
