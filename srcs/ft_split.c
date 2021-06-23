@@ -3,39 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 12:18:39 by soooh             #+#    #+#             */
-/*   Updated: 2021/06/22 21:35:08 by soooh            ###   ########.fr       */
+/*   Updated: 2021/06/23 02:22:53 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void		*ft_calloc(size_t n, size_t size)
+void	*ft_calloc(size_t count, size_t size)
 {
-	void	*ptr;
-
-	ptr = (void *)malloc(n * size);
-	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, n * size);
-	return (ptr);
-}
-
-void	ft_bzero(void *s, size_t n)
-{
-	size_t	i;
+	size_t			total_size;
+	size_t			i;
+	unsigned char	*ptr;
 
 	i = 0;
-	if (n != 0)
+	total_size = count * size;
+	ptr = (unsigned char *)malloc(total_size);
+	if (!ptr)
+		return (void *)(NULL);
+	while (i < total_size)
 	{
-		while (i < n)
-		{
-			((char *)s)[i] = '\0';
-			i++;
-		}
+		ptr[i] = '\0';
+		i++;
 	}
+	return (void *)(ptr);
 }
 
 static int		ft_wcount(char const *s, char c)
@@ -111,3 +104,4 @@ char			**ft_split(char const *s, char c)
 	}
 	return (ret);
 }
+

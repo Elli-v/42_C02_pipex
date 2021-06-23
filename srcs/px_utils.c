@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   px_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 22:06:28 by soooh             #+#    #+#             */
-/*   Updated: 2021/06/22 21:06:12 by soooh            ###   ########.fr       */
+/*   Updated: 2021/06/24 02:17:05 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,24 +69,44 @@ char		*ft_strdup(const char *src)
 	return (mem);
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+size_t		ft_strlcpy(char *dest, const char *src, size_t size)
 {
+	size_t	src_len;
 	size_t	i;
-	size_t	len;
 
-	if (dst == NULL && src == NULL)
-		return (0);
-	i = 0;
-	len = ft_strlen(src);
+	src_len = 0;
+	while (src[src_len] != '\0')
+	{
+		src_len++;
+	}
 	if (size == 0)
-		return (len);
-	while ((i < (size - 1)) && (src[i] != '\0'))
+	{
+		return (src_len);
+	}
+	i = 0;
+	while (src[i] != '\0' && i < (size - 1))
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = 0;
+	return (src_len);
+}
+
+char	*ft_strncpy(char *dst, const char *src, size_t len)
+{
+	int	i;
+
+	if (!dst && !src)
+		px_error("Both strings are null");
+	i = 0;
+	while (src[i] && len--)
 	{
 		dst[i] = src[i];
 		i++;
 	}
-	dst[i] = '\0';
-	return (len);
+	dst[i] = 0;
+	return (dst);
 }
 
 char		*ft_strjoin(char *s1, char *s2)
@@ -104,7 +124,12 @@ char		*ft_strjoin(char *s1, char *s2)
 	if (!(newstr = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1))))
 		return (NULL);
 	ft_strlcpy(newstr, s1, s1_len + 1);
-	free(s1);
 	ft_strlcat(newstr + (s1_len), s2, s2_len + 1);
 	return (newstr);
+}
+
+void	px_error(char *str)
+{
+	perror(str);
+	exit(1);
 }
