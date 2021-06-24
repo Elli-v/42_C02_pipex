@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   px_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 22:06:28 by soooh             #+#    #+#             */
-/*   Updated: 2021/06/24 02:17:05 by soooh            ###   ########.fr       */
+/*   Updated: 2021/06/24 18:22:31 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-size_t	ft_strlen(const char *str)
+size_t			ft_strlen(const char *str)
 {
 	int len;
 
@@ -24,7 +24,7 @@ size_t	ft_strlen(const char *str)
 	return (len);
 }
 
-size_t		ft_strlcat(char *dest, char *src, size_t size)
+size_t			ft_strlcat(char *dest, char *src, size_t size)
 {
 	size_t	dest_len;
 	size_t	src_len;
@@ -51,7 +51,7 @@ size_t		ft_strlcat(char *dest, char *src, size_t size)
 	}
 }
 
-char		*ft_strdup(const char *src)
+char			*ft_strdup(const char *src)
 {
 	size_t	i;
 	char	*mem;
@@ -69,7 +69,7 @@ char		*ft_strdup(const char *src)
 	return (mem);
 }
 
-size_t		ft_strlcpy(char *dest, const char *src, size_t size)
+size_t			ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t	src_len;
 	size_t	i;
@@ -93,23 +93,7 @@ size_t		ft_strlcpy(char *dest, const char *src, size_t size)
 	return (src_len);
 }
 
-char	*ft_strncpy(char *dst, const char *src, size_t len)
-{
-	int	i;
-
-	if (!dst && !src)
-		px_error("Both strings are null");
-	i = 0;
-	while (src[i] && len--)
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = 0;
-	return (dst);
-}
-
-char		*ft_strjoin(char *s1, char *s2)
+char			*ft_strjoin(char *s1, char *s2)
 {
 	char	*newstr;
 	int		s1_len;
@@ -126,10 +110,4 @@ char		*ft_strjoin(char *s1, char *s2)
 	ft_strlcpy(newstr, s1, s1_len + 1);
 	ft_strlcat(newstr + (s1_len), s2, s2_len + 1);
 	return (newstr);
-}
-
-void	px_error(char *str)
-{
-	perror(str);
-	exit(1);
 }

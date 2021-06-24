@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 12:18:39 by soooh             #+#    #+#             */
-/*   Updated: 2021/06/23 02:22:53 by soooh            ###   ########.fr       */
+/*   Updated: 2021/06/24 18:22:21 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	*ft_calloc(size_t count, size_t size)
+void				*ft_calloc(size_t count, size_t size)
 {
 	size_t			total_size;
 	size_t			i;
@@ -31,7 +31,7 @@ void	*ft_calloc(size_t count, size_t size)
 	return (void *)(ptr);
 }
 
-static int		ft_wcount(char const *s, char c)
+static int			ft_wcount(char const *s, char c)
 {
 	int		flag;
 	int		n;
@@ -58,7 +58,7 @@ static int		ft_wcount(char const *s, char c)
 	return (n);
 }
 
-static char		*ft_wlen(int *a, const char *s, char c)
+static char			*ft_wlen(int *a, const char *s, char c)
 {
 	int		i;
 	int		k;
@@ -77,7 +77,7 @@ static char		*ft_wlen(int *a, const char *s, char c)
 	return (ret);
 }
 
-char			**ft_split(char const *s, char c)
+char				**ft_split(char const *s, char c)
 {
 	char	**ret;
 	int		k;
@@ -104,4 +104,3 @@ char			**ft_split(char const *s, char c)
 	}
 	return (ret);
 }
-
