@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 18:03:34 by daelee            #+#    #+#             */
-/*   Updated: 2021/06/26 02:37:44 by soooh            ###   ########.fr       */
+/*   Updated: 2021/06/26 02:53:15 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@
 # endif
 
 int			get_next_line(int fd, char **line);
-int			px_gnl(char **line);
-char	*px_strjoin(char *s1, char *s2);
-int		px_strlen(char *s);
 
 size_t		gnl_strlen(const char *str);
 size_t		gnl_strlcpy(char *dest, const char *src, size_t size);
