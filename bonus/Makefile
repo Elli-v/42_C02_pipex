@@ -6,7 +6,7 @@
 #    By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/21 21:52:21 by soooh             #+#    #+#              #
-#    Updated: 2021/06/25 02:12:54 by soooh            ###   ########.fr        #
+#    Updated: 2021/06/26 02:25:35 by soooh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,15 @@ SRCS			= ./pipex_bonus.c\
 					./px_pipe_bonus.c\
 					./px_execve_bonus.c\
 					./px_utils_bonus.c\
-					./ft_split.c
+					./px_utils_bonus2.c\
+					./ft_split.c\
+					./gnl/get_next_line.c\
+					./gnl/get_next_line_utils.c
 
 OBJS			= $(SRCS:.c=.o)
 OUTFILE			= out
 CFLAGS			= -Wall -Wextra -Werror
-#CFLAGS    		= -g3 -fsanitize=address
+CFLAGS    		= -g3 -fsanitize=address
 
 INC_LINK 		=
 

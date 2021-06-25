@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 22:00:23 by soooh             #+#    #+#             */
-/*   Updated: 2021/06/25 01:58:37 by soooh            ###   ########.fr       */
+/*   Updated: 2021/06/25 20:01:13 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include "./gnl/get_next_line.h"
 
 typedef struct	s_execve {
 	const char	*cmd[5];
@@ -30,6 +31,11 @@ typedef struct	s_pipex {
 	char		*cmd1;
 	char		*cmd2;
 }				t_px;
+
+/*
+** px_utils_bonus2.c
+*/
+int				ft_strcmp(const char *s1, const char *s2);
 
 /*
 ** px_utils.c
