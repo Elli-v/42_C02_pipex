@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   px_gnl.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 19:25:36 by soooh             #+#    #+#             */
-/*   Updated: 2021/06/26 02:53:11 by soooh            ###   ########.fr       */
+/*   Updated: 2021/06/28 22:08:00 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "pipex_bonus.h"
 
-int					find_n(char *backup)
+int				find_n(char *backup)
 {
 	int		i;
 
@@ -26,27 +26,27 @@ int					find_n(char *backup)
 	return (-1);
 }
 
-int					div_line(char **backup, char **line, int idx_num)
+int				div_line(char **backup, char **line, int idx_num)
 {
 	char		*temp;
 	int			len;
 
 	(*backup)[idx_num] = '\0';
-	*line = gnl_strdup(*backup);
-	len = gnl_strlen(*backup + idx_num + 1);
+	*line = ft_strdup(*backup);
+	len = ft_strlen(*backup + idx_num + 1);
 	if (len == 0)
 	{
 		free(*backup);
 		*backup = 0;
 		return (1);
 	}
-	temp = gnl_strdup(*backup + idx_num + 1);
+	temp = ft_strdup(*backup + idx_num + 1);
 	free(*backup);
 	*backup = temp;
 	return (1);
 }
 
-int					onandon(char **backup, char **line, int save_str)
+int				onandon(char **backup, char **line, int save_str)
 {
 	int		idx_num;
 
@@ -60,11 +60,11 @@ int					onandon(char **backup, char **line, int save_str)
 		*backup = 0;
 		return (0);
 	}
-	*line = gnl_strdup("");
+	*line = ft_strdup("");
 	return (0);
 }
 
-int					get_next_line(int fd, char **line)
+int				px_gnl(int fd, char **line)
 {
 	char			buffer[BUFFER_SIZE + 1];
 	static char		*backup[OPEN_MAX];
@@ -76,7 +76,7 @@ int					get_next_line(int fd, char **line)
 	while ((save_str = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
 		buffer[save_str] = '\0';
-		backup[fd] = gnl_strjoin(backup[fd], buffer);
+		backup[fd] = ft_strjoin(backup[fd], buffer);
 		if ((idx_num = find_n(backup[fd])) >= 0)
 			return (div_line(&backup[fd], line, idx_num));
 	}

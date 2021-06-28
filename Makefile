@@ -6,7 +6,7 @@
 #    By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/21 21:52:21 by soooh             #+#    #+#              #
-#    Updated: 2021/06/25 20:20:46 by soooh            ###   ########.fr        #
+#    Updated: 2021/06/28 23:02:50 by soooh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,24 +27,22 @@ SRCS_B			= ./bonus/pipex_bonus.c\
 					./bonus/px_execve_bonus.c\
 					./bonus/px_utils_bonus.c\
 					./bonus/px_utils_bonus2.c\
+					./bonus/px_heredoc.c\
 					./bonus/ft_split.c\
-					./bonus/gnl/get_next_line.c\
-					./bonus/gnl/get_next_line_utils.c
+					./bonus/px_gnl.c\
 
 OBJS			= $(SRCS:.c=.o)
 OBJS_B			= $(SRCS_B:.c=.o)
 OUTFILE			= out
 CFLAGS			= -Wall -Wextra -Werror
-#CFLAGS    		= -g3 -fsanitize=address
+CFLAGS    		= -g3 -fsanitize=address
 
 INC_LINK 		= -I./srcs 
 
 all: $(NAME)
 
-bonus:			re
-	@$(MAKE) fclean -C ./bonus
-	@$(MAKE) -C ./bonus
-	@cp ./bonus/pipex_bonus ./pipex_bonus
+bonus: fclean $(OBJS_B)
+	@$(CC) -o $(NAME) $(CFLAGS) $(INC_LINK) $(OBJS_B)
 
 $(NAME):		$(OBJS)
 	@$(CC) -o $(NAME) $(CFLAGS) $(INC_LINK) $(OBJS)

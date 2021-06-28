@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 22:00:23 by soooh             #+#    #+#             */
-/*   Updated: 2021/06/25 20:01:13 by soooh            ###   ########.fr       */
+/*   Updated: 2021/06/29 00:18:49 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include "./gnl/get_next_line.h"
+
+#  define BUFFER_SIZE 5000
+#  define OPEN_MAX 32
 
 typedef struct	s_execve {
 	const char	*cmd[5];
@@ -28,9 +30,20 @@ typedef struct	s_execve {
 typedef struct	s_pipex {
 	char		*infile;
 	char		*outfile;
-	char		*cmd1;
-	char		*cmd2;
+	char		**cmd;
+	int			cmd_cnt;
 }				t_px;
+
+/*
+** gnl
+*/
+int				px_gnl(int fd, char **line);
+
+/*
+** px_heredoc.c
+*/
+void			clear_temp(void);
+int				heredoc(char **argv);
 
 /*
 ** px_utils_bonus2.c
