@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 22:00:23 by soooh             #+#    #+#             */
-/*   Updated: 2021/06/29 00:18:49 by soooh            ###   ########.fr       */
+/*   Updated: 2021/06/29 18:53:40 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ typedef struct	s_pipex {
 	int			cmd_cnt;
 }				t_px;
 
+typedef struct	s_fd {
+	int			prev_pipefd[2];
+	int			pipefd[2];
+}				t_fd;
 /*
 ** gnl
 */
