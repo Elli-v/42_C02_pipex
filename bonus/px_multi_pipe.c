@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 03:59:27 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/01 04:32:30 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/01 04:46:23 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,9 @@ void			recursive_pipe(char **argv, t_px *px_cmd, int i)
 		pid = fork();
 		if (pid > 0)
 		{
-			wait(NULL);
+			waitpid(pid, &status, 0);
+			if (!WIFEXITED(status))
+				px_error("pid error\n");
 			recursive_pipe(argv, px_cmd, i);
 		}
 		else if (pid == 0)
