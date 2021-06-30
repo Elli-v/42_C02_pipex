@@ -6,7 +6,7 @@
 #    By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/21 21:52:21 by soooh             #+#    #+#              #
-#    Updated: 2021/07/01 04:00:44 by soooh            ###   ########.fr        #
+#    Updated: 2021/07/01 04:41:35 by soooh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,6 @@ SRCS_B			= ./bonus/pipex_bonus.c\
 					./bonus/px_pipe_bonus.c\
 					./bonus/px_execve_bonus.c\
 					./bonus/px_utils_bonus.c\
-					./bonus/px_utils_bonus2.c\
 					./bonus/px_heredoc.c\
 					./bonus/px_multi_pipe.c\
 					./bonus/ft_split.c\
@@ -36,7 +35,7 @@ OBJS			= $(SRCS:.c=.o)
 OBJS_B			= $(SRCS_B:.c=.o)
 OUTFILE			= out
 CFLAGS			= -Wall -Wextra -Werror
-CFLAGS    		= -g3 -fsanitize=address
+#CFLAGS    		= -g3 -fsanitize=address
 
 INC_LINK 		= -I./srcs 
 
@@ -55,9 +54,7 @@ clean:
 
 fclean: clean
 	@$(RM) $(NAME)
-	@if [ -f ./pipex_bonus ]; then $(RM) ./pipex_bonus; fi;
-	@if [ -f ./bonus/pipex_bonus ]; then $(RM) ./bonus/pipex_bonus; fi;
-
+	
 re:				fclean all
 
 .PHONY:			all clean fclean re bonus

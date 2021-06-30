@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 22:00:23 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/01 04:00:25 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/01 04:39:27 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-#  define BUFFER_SIZE 5000
-#  define OPEN_MAX 32
+# define BUFFER_SIZE 5000
+# define OPEN_MAX 32
 
 typedef struct	s_execve {
 	const char	*cmd[5];
@@ -36,15 +36,12 @@ typedef struct	s_pipex {
 	int			pipefd[2];
 }				t_px;
 
-typedef struct	s_fd {
-	int			prev_pipefd[2];
-	int			pipefd[2];
-}				t_fd;
-
-
 /*
-** gnl
+** px_gnl.c
 */
+int				find_n(char *backup);
+int				div_line(char **backup, char **line, int idx_num);
+int				onandon(char **backup, char **line, int save_str);
 int				px_gnl(int fd, char **line);
 
 /*
@@ -57,16 +54,13 @@ int				heredoc(char **argv);
 /*
 ** px_multi_pipe.c
 */
+void			hand_over(t_px *px_cmd);
+void			last_cmd(t_px *px_cmd, t_ec *ec_cmd, int i);
 int				multi_pipe(int argc, char **argv, t_px *px_cmd);
 void			recursive_pipe(char **argv, t_px *px_cmd, int i);
 
 /*
-** px_utils_bonus2.c
-*/
-int				ft_strcmp(const char *s1, const char *s2);
-
-/*
-** px_utils.c
+** px_utils_bonus.c
 */
 size_t			ft_strlen(const char *str);
 size_t			ft_strlcat(char *dest, char *src, size_t size);
@@ -81,13 +75,13 @@ void			*ft_calloc(size_t count, size_t size);
 char			**ft_split(char const *s, char c);
 
 /*
-** px_redirection.c
+** px_redirection_bonus.c
 */
 void			redir_input(char *file);
 void			redir_output(char *file);
 
 /*
-** px_pipe.c
+** px_pipe_bonus.c
 */
 void			init_px_cmd(int argc, char **argv, t_px *px_cmd);
 void			connect_pipe(int pipefd[2], int num);
@@ -95,15 +89,16 @@ void			close_pipe(int pipefd[2]);
 void			b_connect_pipe(int pipefd[2], int num);
 
 /*
-** px_execve.c
+** px_execve_bonus.c
 */
 void			init_ec_cmd(const char *cmd, t_ec *ec_cmd);
 void			execve_cmd(const char *path, t_ec *ec_cmd);
 
 /*
-** pipex.c
+** pipex_bonus.c
 */
 void			px_error(char *str);
+int				ft_strcmp(const char *s1, const char *s2);
 int				main(int argc, char **argv);
 
 #endif

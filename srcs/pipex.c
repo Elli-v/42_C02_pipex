@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 22:00:37 by soooh             #+#    #+#             */
-/*   Updated: 2021/06/24 18:32:38 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/01 04:18:25 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int				main(int argc, char **argv)
 	int			pipefd[2];
 
 	if (argc != 5)
-		px_error("인자 갯수 안 맞음");
+		px_error("error_invaild_argv");
 	init_px_cmd(argv, &px_cmd);
 	pipe(pipefd);
 	pid = fork();

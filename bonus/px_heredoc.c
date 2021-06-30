@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 22:35:36 by soooh             #+#    #+#             */
-/*   Updated: 2021/06/30 23:54:54 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/01 04:35:29 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void			clear_temp(void)
 {
-	char **argv;
+	char		**argv;
 
 	argv = malloc(sizeof(char *) * 3);
 	argv[0] = "-f";
@@ -24,7 +24,7 @@ void			clear_temp(void)
 		execve("/bin/rm", (char *const *)argv, NULL);
 }
 
-void				heredoc_cmd(char **argv)
+void			heredoc_cmd(char **argv)
 {
 	int			pipefd[2];
 	pid_t		pid;
@@ -49,7 +49,7 @@ void				heredoc_cmd(char **argv)
 		execve_cmd(argv[3], &ec_cmd);
 	}
 	else
-		px_error("응 에러");
+		px_error("error");
 }
 
 int				heredoc(char **argv)
@@ -64,7 +64,7 @@ int				heredoc(char **argv)
 	pipe(pipefd);
 	fd = open("./temp", O_CREAT | O_RDWR | O_TRUNC, 0644);
 	if (fd < 0)
-		px_error("임시 파일에 문제 생김;;");
+		px_error("error_temp_file");
 	write(STDOUT_FILENO, "heredoc> ", 9);
 	while ((i = px_gnl(0, &buf)) > 0)
 	{
@@ -72,7 +72,7 @@ int				heredoc(char **argv)
 		{
 			close(fd);
 			return (0);
-		}			
+		}
 		write(fd, buf, ft_strlen(buf));
 		write(fd, "\n", 1);
 		write(STDOUT_FILENO, "heredoc> ", 9);

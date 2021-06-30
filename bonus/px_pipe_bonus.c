@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 18:06:56 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/01 03:59:03 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/01 04:38:55 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void			init_px_cmd(int argc, char **argv, t_px *px_cmd)
 {
 	int			n;
 	int			i;
-	
+
 	i = -1;
 	n = argc - 3;
 	px_cmd->infile = argv[1];

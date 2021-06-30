@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 22:00:37 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/01 03:59:49 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/01 04:23:04 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,30 @@ void			px_error(char *str)
 	exit(1);
 }
 
+int				ft_strcmp(const char *s1, const char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i])
+	{
+		if (s1[i] != s2[i])
+			return (1);
+		else
+			i++;
+	}
+	if (s1[i] != '\0' || s2[i] != '\0')
+		return (1);
+	return (0);
+}
+
 int				main(int argc, char **argv)
 {
 	t_px		px_cmd;
 	pid_t		pid;
-	t_fd		pipefd;
-	
+
 	if (argc < 5)
-		px_error("인자 갯수 안 맞음");
+		px_error("error_invaild_argv");
 	pid = fork();
 	if (pid > 0)
 	{
