@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 22:00:23 by soooh             #+#    #+#             */
-/*   Updated: 2021/06/29 18:53:40 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/01 04:00:25 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,17 @@ typedef struct	s_pipex {
 	char		*infile;
 	char		*outfile;
 	char		**cmd;
-	int			cmd_cnt;
+	int			pipe_cnt;
+	int			prev_pipefd[2];
+	int			pipefd[2];
 }				t_px;
 
 typedef struct	s_fd {
 	int			prev_pipefd[2];
 	int			pipefd[2];
 }				t_fd;
+
+
 /*
 ** gnl
 */
@@ -47,7 +51,14 @@ int				px_gnl(int fd, char **line);
 ** px_heredoc.c
 */
 void			clear_temp(void);
+void			heredoc_cmd(char **argv);
 int				heredoc(char **argv);
+
+/*
+** px_multi_pipe.c
+*/
+int				multi_pipe(int argc, char **argv, t_px *px_cmd);
+void			recursive_pipe(char **argv, t_px *px_cmd, int i);
 
 /*
 ** px_utils_bonus2.c
@@ -78,8 +89,10 @@ void			redir_output(char *file);
 /*
 ** px_pipe.c
 */
-void			init_px_cmd(char **argv, t_px *px_cmd);
+void			init_px_cmd(int argc, char **argv, t_px *px_cmd);
 void			connect_pipe(int pipefd[2], int num);
+void			close_pipe(int pipefd[2]);
+void			b_connect_pipe(int pipefd[2], int num);
 
 /*
 ** px_execve.c

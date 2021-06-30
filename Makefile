@@ -6,7 +6,7 @@
 #    By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/21 21:52:21 by soooh             #+#    #+#              #
-#    Updated: 2021/06/28 23:02:50 by soooh            ###   ########.fr        #
+#    Updated: 2021/07/01 04:00:44 by soooh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS_B			= ./bonus/pipex_bonus.c\
 					./bonus/px_utils_bonus.c\
 					./bonus/px_utils_bonus2.c\
 					./bonus/px_heredoc.c\
+					./bonus/px_multi_pipe.c\
 					./bonus/ft_split.c\
 					./bonus/px_gnl.c\
 
