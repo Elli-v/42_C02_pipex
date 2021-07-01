@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   px_pipe_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 18:06:56 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/01 04:38:55 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/01 17:44:19 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ void			init_px_cmd(int argc, char **argv, t_px *px_cmd)
 	px_cmd->outfile = argv[argc - 1];
 	px_cmd->cmd = malloc(sizeof(int *) * n);
 	while (++i < n)
-	{
-		px_cmd->cmd[i] = malloc(sizeof(int *) * 2);
 		px_cmd->cmd[i] = argv[i + 2];
-	}
 	px_cmd->pipe_cnt = n - 1;
 }
 

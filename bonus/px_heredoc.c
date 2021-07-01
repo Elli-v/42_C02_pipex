@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   px_heredoc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 22:35:36 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/01 04:50:38 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/01 17:36:38 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int				heredoc(char **argv)
 	i = 1;
 	buf = 0;
 	pipe(pipefd);
-	fd = open("./temp", O_CREAT | O_RDWR | O_TRUNC, 0644);
+	fd = open("./temp", O_CREAT | O_RDWR | O_APPEND, 0644);
 	if (fd < 0)
 		px_error("error_temp_file");
 	write(STDOUT_FILENO, "heredoc> ", 9);
