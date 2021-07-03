@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   px_execve_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 18:07:48 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/01 19:08:17 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/04 01:44:10 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ void			execve_cmd(const char *path, t_ec *ec_cmd)
 	init_ec_cmd(path, ec_cmd);
 	while (i < 5)
 		execve(ec_cmd->cmd[++i], ec_cmd->argv, ec_cmd->envp);
+	px_error("command not found");
 }
