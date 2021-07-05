@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 22:00:23 by soooh             #+#    #+#             */
-/*   Updated: 2021/06/24 18:22:02 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/05 20:48:14 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 typedef struct	s_execve {
 	const char	*cmd[5];
 	char *const	*argv;
-	char *const	*envp;
+	char *const	**envp;
 }				t_ec;
 
 typedef struct	s_pipex {
@@ -62,12 +62,12 @@ void			connect_pipe(int pipefd[2], int num);
 ** px_execve.c
 */
 void			init_ec_cmd(const char *cmd, t_ec *ec_cmd);
-void			execve_cmd(const char *path, t_ec *ec_cmd);
+void			execve_cmd(const char *path, t_ec *ec_cmd, char **envp);
 
 /*
 ** pipex.c
 */
 void			px_error(char *str);
-int				main(int argc, char **argv);
+int				main(int argc, char **argv, char **enpv);
 
 #endif

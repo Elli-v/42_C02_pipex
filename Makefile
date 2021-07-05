@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+         #
+#    By: soooh <soooh@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/21 21:52:21 by soooh             #+#    #+#              #
-#    Updated: 2021/07/01 04:41:35 by soooh            ###   ########.fr        #
+#    Updated: 2021/07/05 20:04:37 by soooh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ OBJS			= $(SRCS:.c=.o)
 OBJS_B			= $(SRCS_B:.c=.o)
 OUTFILE			= out
 CFLAGS			= -Wall -Wextra -Werror
-#CFLAGS    		= -g3 -fsanitize=address
+CFLAGS    		= -g3 -fsanitize=address
 
 INC_LINK 		= -I./srcs 
 
