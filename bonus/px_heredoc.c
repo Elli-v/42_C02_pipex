@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   px_heredoc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 22:35:36 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/01 17:36:38 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/06 22:03:33 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void			clear_temp(void)
 		execve("/bin/rm", (char *const *)argv, NULL);
 }
 
-void			heredoc_cmd(char **argv)
+void			heredoc_cmd(char **argv, char **envp)
 {
 	int			pipefd[2];
 	pid_t		pid;

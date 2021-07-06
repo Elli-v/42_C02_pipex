@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   px_pipe_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 18:06:56 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/01 17:44:19 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/06 21:57:33 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
+
+void			hand_over(t_px *px_cmd)
+{
+	px_cmd->prev_pipefd[0] = px_cmd->pipefd[0];
+	px_cmd->prev_pipefd[1] = px_cmd->pipefd[1];
+	b_connect_pipe(px_cmd->prev_pipefd, 0);
+	pipe(px_cmd->pipefd);
+}
 
 void			init_px_cmd(int argc, char **argv, t_px *px_cmd)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 22:00:23 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/05 20:48:14 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/07 05:05:13 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@
 # include <stdio.h>
 
 typedef struct	s_execve {
-	const char	*cmd[5];
+	char		*file;
 	char *const	*argv;
-	char *const	**envp;
+	char *const	*envp;
+	char		**envp_list;
+	char		**temp;
 }				t_ec;
 
 typedef struct	s_pipex {
@@ -61,8 +63,11 @@ void			connect_pipe(int pipefd[2], int num);
 /*
 ** px_execve.c
 */
+char			*ft_strstr(char *str, char *to_find);
+void			init_envp(t_ec *ec_cmd);
+void			ex_var(char **chunk);
 void			init_ec_cmd(const char *cmd, t_ec *ec_cmd);
-void			execve_cmd(const char *path, t_ec *ec_cmd, char **envp);
+void			execve_cmd(const char *path, t_ec *ec_cmd);
 
 /*
 ** pipex.c

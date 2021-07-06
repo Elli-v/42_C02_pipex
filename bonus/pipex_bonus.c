@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 22:00:37 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/01 19:07:33 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/06 20:38:51 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int				ft_strcmp(const char *s1, const char *s2)
 	return (0);
 }
 
-int				main(int argc, char **argv)
+int				main(int argc, char **argv, char **envp)
 {
 	t_px		px_cmd;
 	pid_t		pid;
@@ -55,10 +55,10 @@ int				main(int argc, char **argv)
 		if (ft_strcmp(argv[1], "heredoc") == 0)
 		{
 			heredoc(argv);
-			heredoc_cmd(argv);
+			heredoc_cmd(argv, envp);
 		}
 		else
-			multi_pipe(argc, argv, &px_cmd);
+			multi_pipe(argc, argv, envp, &px_cmd);
 	}
 	return (0);
 }

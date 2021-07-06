@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 12:18:39 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/03 20:14:00 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/07 02:09:08 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void				*ft_calloc(size_t count, size_t size)
 	return (void *)(ptr);
 }
 
-static int			ft_wcount(char const *s, char c)
+static int		ft_wcount(char const *s, char c)
 {
 	int		flag;
 	int		n;
@@ -58,7 +58,7 @@ static int			ft_wcount(char const *s, char c)
 	return (n);
 }
 
-static char			*ft_wlen(int *a, const char *s, char c)
+static char		*ft_wlen(int *a, const char *s, char c)
 {
 	int		i;
 	int		k;
@@ -77,7 +77,7 @@ static char			*ft_wlen(int *a, const char *s, char c)
 	return (ret);
 }
 
-char				**ft_split(char const *s, char c)
+char			**ft_split(char const *s, char c)
 {
 	char	**ret;
 	int		k;

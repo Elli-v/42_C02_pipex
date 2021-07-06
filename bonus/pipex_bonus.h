@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 22:00:23 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/01 04:39:27 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/06 21:51:13 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,13 @@
 
 typedef struct	s_execve {
 	const char	*cmd[5];
+	char		*file;
 	char *const	*argv;
 	char *const	*envp;
+	char		**envp_list;
+	char		**temp;
 }				t_ec;
+
 
 typedef struct	s_pipex {
 	char		*infile;
@@ -48,7 +52,7 @@ int				px_gnl(int fd, char **line);
 ** px_heredoc.c
 */
 void			clear_temp(void);
-void			heredoc_cmd(char **argv);
+void			heredoc_cmd(char **argv, char **envp);
 int				heredoc(char **argv);
 
 /*
@@ -56,7 +60,7 @@ int				heredoc(char **argv);
 */
 void			hand_over(t_px *px_cmd);
 void			last_cmd(t_px *px_cmd, t_ec *ec_cmd, int i);
-int				multi_pipe(int argc, char **argv, t_px *px_cmd);
+int				multi_pipe(int argc, char **argv, char **envp, t_px *px_cmd);
 void			recursive_pipe(char **argv, t_px *px_cmd, int i);
 
 /*
@@ -91,6 +95,8 @@ void			b_connect_pipe(int pipefd[2], int num);
 /*
 ** px_execve_bonus.c
 */
+char			*ft_strstr(char *str, char *to_find);
+void			init_envp(t_ec *ec_cmd);
 void			init_ec_cmd(const char *cmd, t_ec *ec_cmd);
 void			execve_cmd(const char *path, t_ec *ec_cmd);
 
@@ -99,6 +105,6 @@ void			execve_cmd(const char *path, t_ec *ec_cmd);
 */
 void			px_error(char *str);
 int				ft_strcmp(const char *s1, const char *s2);
-int				main(int argc, char **argv);
+int				main(int argc, char **argv, char **envp);
 
 #endif

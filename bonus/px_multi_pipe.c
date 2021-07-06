@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   px_multi_pipe.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 03:59:27 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/01 19:08:48 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/06 22:03:47 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
-
-void			hand_over(t_px *px_cmd)
-{
-	px_cmd->prev_pipefd[0] = px_cmd->pipefd[0];
-	px_cmd->prev_pipefd[1] = px_cmd->pipefd[1];
-	b_connect_pipe(px_cmd->prev_pipefd, 0);
-	pipe(px_cmd->pipefd);
-}
 
 void			last_cmd(t_px *px_cmd, t_ec *ec_cmd, int i)
 {
@@ -27,7 +19,8 @@ void			last_cmd(t_px *px_cmd, t_ec *ec_cmd, int i)
 	execve_cmd(px_cmd->cmd[i], ec_cmd);
 }
 
-int				multi_pipe(int argc, char **argv, t_px *px_cmd)
+
+int				multi_pipe(int argc, char **argv, char **envp, t_px *px_cmd)
 {
 	pid_t		pid;
 	int			status;
@@ -61,7 +54,7 @@ void			recursive_pipe(char **argv, t_px *px_cmd, int i)
 	int			status;
 	t_ec		ec_cmd;
 
-	++i;
+	++i;   
 	if (i == px_cmd->pipe_cnt)
 		last_cmd(px_cmd, &ec_cmd, i);
 	else
