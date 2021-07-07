@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   px_redirection.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 18:05:47 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/01 04:17:59 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/07 15:43:50 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void			redir_input(char *file)
+void	redir_input(char *file)
 {
 	int			fd;
 
@@ -23,7 +23,7 @@ void			redir_input(char *file)
 	close(fd);
 }
 
-void			redir_output(char *file)
+void	redir_output(char *file)
 {
 	int			fd;
 

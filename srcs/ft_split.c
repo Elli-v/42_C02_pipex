@@ -3,35 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 12:18:39 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/07 02:09:08 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/07 15:57:08 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void				*ft_calloc(size_t count, size_t size)
+void	*ft_calloc(size_t count, size_t size)
 {
+	unsigned char	*ptr;
 	size_t			total_size;
 	size_t			i;
-	unsigned char	*ptr;
 
 	i = 0;
 	total_size = count * size;
 	ptr = (unsigned char *)malloc(total_size);
 	if (!ptr)
-		return (void *)(NULL);
+		return (0);
 	while (i < total_size)
 	{
 		ptr[i] = '\0';
 		i++;
 	}
-	return (void *)(ptr);
+	return (ptr);
 }
 
-static int		ft_wcount(char const *s, char c)
+static int	ft_wcount(char const *s, char c)
 {
 	int		flag;
 	int		n;
@@ -58,7 +58,7 @@ static int		ft_wcount(char const *s, char c)
 	return (n);
 }
 
-static char		*ft_wlen(int *a, const char *s, char c)
+static char	*ft_wlen(int *a, const char *s, char c)
 {
 	int		i;
 	int		k;
@@ -67,7 +67,8 @@ static char		*ft_wlen(int *a, const char *s, char c)
 	i = 0;
 	while (s[*a + i] && s[*a + i] != c)
 		i++;
-	if (!(ret = (char *)malloc(sizeof(char) * (i + 1))))
+	ret = (char *)malloc(sizeof(char) * (i + 1));
+	if (ret == 0)
 		return (0);
 	ret[i] = 0;
 	*a += i;
@@ -77,7 +78,18 @@ static char		*ft_wlen(int *a, const char *s, char c)
 	return (ret);
 }
 
-char			**ft_split(char const *s, char c)
+static char	*ft_return(char **ret)
+{
+	int		n;
+
+	n = 0;
+	while (ret[n])
+		free(ret[n++]);
+	free(ret);
+	return (0);
+}
+
+char	**ft_split(char const *s, char c)
 {
 	char	**ret;
 	int		k;
@@ -85,7 +97,8 @@ char			**ft_split(char const *s, char c)
 	int		n;
 
 	n = ft_wcount(s, c);
-	if (!(ret = (char **)ft_calloc((n + 1), sizeof(char *))))
+	ret = (char **)ft_calloc((n + 1), sizeof(char *));
+	if (ret == 0)
 		return (0);
 	i = -1;
 	k = 0;
@@ -93,14 +106,9 @@ char			**ft_split(char const *s, char c)
 	{
 		while (s[k] && s[k] == c)
 			k++;
-		if (!(ret[i] = ft_wlen(&k, s, c)))
-		{
-			n = 0;
-			while (ret[n])
-				free(ret[n++]);
-			free(ret);
-			return (0);
-		}
+		ret[i] = ft_wlen(&k, s, c);
+		if (ret[i] == 0)
+			ft_return(ret);
 	}
 	return (ret);
 }

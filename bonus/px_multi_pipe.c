@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   px_multi_pipe.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 03:59:27 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/06 22:03:47 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/07 20:06:42 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void			last_cmd(t_px *px_cmd, t_ec *ec_cmd, int i)
 {
 	redir_output(px_cmd->outfile);
 	b_connect_pipe(px_cmd->pipefd, 0);
+	printf(">>>>>s = %s\n", px_cmd->cmd[i]);
 	execve_cmd(px_cmd->cmd[i], ec_cmd);
 }
 
@@ -28,6 +29,8 @@ int				multi_pipe(int argc, char **argv, char **envp, t_px *px_cmd)
 	int			i;
 
 	i = 0;
+	ec_cmd.temp = envp;
+	printf("2\n");
 	init_px_cmd(argc, argv, px_cmd);
 	pipe(px_cmd->pipefd);
 	pid = fork();
@@ -41,8 +44,11 @@ int				multi_pipe(int argc, char **argv, char **envp, t_px *px_cmd)
 	}
 	else if (pid == 0)
 	{
+		printf("3\n");
 		redir_input(px_cmd->infile);
+		printf("4\n");
 		b_connect_pipe(px_cmd->pipefd, 1);
+		printf("5\n");
 		execve_cmd(px_cmd->cmd[i], &ec_cmd);
 	}
 	return (0);

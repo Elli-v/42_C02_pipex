@@ -6,15 +6,15 @@
 /*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 22:06:28 by soooh             #+#    #+#             */
-/*   Updated: 2021/06/24 18:22:31 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/07 15:53:24 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-size_t			ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (str[len] != '\0')
@@ -24,7 +24,7 @@ size_t			ft_strlen(const char *str)
 	return (len);
 }
 
-size_t			ft_strlcat(char *dest, char *src, size_t size)
+size_t	ft_strlcat(char *dest, char *src, size_t size)
 {
 	size_t	dest_len;
 	size_t	src_len;
@@ -51,7 +51,7 @@ size_t			ft_strlcat(char *dest, char *src, size_t size)
 	}
 }
 
-char			*ft_strdup(const char *src)
+char	*ft_strdup(const char *src)
 {
 	size_t	i;
 	char	*mem;
@@ -69,7 +69,7 @@ char			*ft_strdup(const char *src)
 	return (mem);
 }
 
-size_t			ft_strlcpy(char *dest, const char *src, size_t size)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t	src_len;
 	size_t	i;
@@ -93,7 +93,7 @@ size_t			ft_strlcpy(char *dest, const char *src, size_t size)
 	return (src_len);
 }
 
-char			*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*newstr;
 	int		s1_len;
@@ -102,10 +102,16 @@ char			*ft_strjoin(char *s1, char *s2)
 	if (!(s1) && !(s2))
 		return (NULL);
 	else if (!(s1) || !(s2))
-		return (!(s1) ? ft_strdup(s2) : ft_strdup(s1));
+	{
+		if (s1 != 0)
+			ft_strdup(s1);
+		else if (s1 == 0)
+			ft_strdup(s2);
+	}
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
-	if (!(newstr = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1))))
+	newstr = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
+	if (newstr == 0)
 		return (NULL);
 	ft_strlcpy(newstr, s1, s1_len + 1);
 	ft_strlcat(newstr + (s1_len), s2, s2_len + 1);

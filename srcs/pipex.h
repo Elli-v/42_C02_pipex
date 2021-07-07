@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 22:00:23 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/07 05:05:13 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/07 15:42:18 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-typedef struct	s_execve {
+typedef struct s_execve {
 	char		*file;
 	char *const	*argv;
 	char *const	*envp;
@@ -26,7 +26,7 @@ typedef struct	s_execve {
 	char		**temp;
 }				t_ec;
 
-typedef struct	s_pipex {
+typedef struct s_pipex {
 	char		*infile;
 	char		*outfile;
 	char		*cmd1;

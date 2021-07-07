@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 22:00:23 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/06 21:51:13 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/07 19:54:41 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define BUFFER_SIZE 5000
 # define OPEN_MAX 32
 
-typedef struct	s_execve {
+typedef struct s_execve {
 	const char	*cmd[5];
 	char		*file;
 	char *const	*argv;
@@ -30,14 +30,14 @@ typedef struct	s_execve {
 	char		**temp;
 }				t_ec;
 
-
-typedef struct	s_pipex {
+typedef struct s_pipex {
 	char		*infile;
 	char		*outfile;
 	char		**cmd;
 	int			pipe_cnt;
 	int			prev_pipefd[2];
 	int			pipefd[2];
+	char		**temp;
 }				t_px;
 
 /*

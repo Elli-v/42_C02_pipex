@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 22:00:37 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/06 20:38:51 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/07 19:57:22 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 
-void			px_error(char *str)
+void	px_error(char *str)
 {
 	perror(str);
 	exit(1);
 }
 
-int				ft_strcmp(const char *s1, const char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
 	int	i;
 
@@ -35,10 +35,10 @@ int				ft_strcmp(const char *s1, const char *s2)
 	return (0);
 }
 
-int				main(int argc, char **argv, char **envp)
+int	main(int argc, char **argv, char **envp)
 {
-	t_px		px_cmd;
-	pid_t		pid;
+	t_px	px_cmd;
+	pid_t	pid;
 
 	if (argc < 5)
 		px_error("error_invaild_argv");
@@ -52,6 +52,7 @@ int				main(int argc, char **argv, char **envp)
 	}
 	else if (pid == 0)
 	{
+		printf("1\n");
 		if (ft_strcmp(argv[1], "heredoc") == 0)
 		{
 			heredoc(argv);
