@@ -6,15 +6,15 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 19:25:36 by soooh             #+#    #+#             */
-/*   Updated: 2021/06/28 22:08:00 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/08 14:32:44 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 
-int				find_n(char *backup)
+int	find_n(char *backup)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (backup[i])
@@ -26,10 +26,10 @@ int				find_n(char *backup)
 	return (-1);
 }
 
-int				div_line(char **backup, char **line, int idx_num)
+int	div_line(char **backup, char **line, int idx_num)
 {
-	char		*temp;
-	int			len;
+	char	*temp;
+	int		len;
 
 	(*backup)[idx_num] = '\0';
 	*line = ft_strdup(*backup);
@@ -46,9 +46,9 @@ int				div_line(char **backup, char **line, int idx_num)
 	return (1);
 }
 
-int				onandon(char **backup, char **line, int save_str)
+int	onandon(char **backup, char **line, int save_str)
 {
-	int		idx_num;
+	int	idx_num;
 
 	if (save_str < 0)
 		return (-1);
@@ -64,12 +64,12 @@ int				onandon(char **backup, char **line, int save_str)
 	return (0);
 }
 
-int				px_gnl(int fd, char **line)
+int	px_gnl(int fd, char **line)
 {
-	char			buffer[BUFFER_SIZE + 1];
-	static char		*backup[OPEN_MAX];
-	int				save_str;
-	int				idx_num;
+	char		buffer[BUFFER_SIZE + 1];
+	static char	*backup[OPEN_MAX];
+	int			save_str;
+	int			idx_num;
 
 	if ((fd < 0) || (line == 0) || (BUFFER_SIZE <= 0))
 		return (-1);

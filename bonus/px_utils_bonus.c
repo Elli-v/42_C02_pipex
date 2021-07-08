@@ -6,13 +6,13 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 22:06:28 by soooh             #+#    #+#             */
-/*   Updated: 2021/06/25 01:58:50 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/08 14:17:29 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 
-size_t			ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	int len;
 
@@ -24,7 +24,7 @@ size_t			ft_strlen(const char *str)
 	return (len);
 }
 
-size_t			ft_strlcat(char *dest, char *src, size_t size)
+size_t	ft_strlcat(char *dest, char *src, size_t size)
 {
 	size_t	dest_len;
 	size_t	src_len;
@@ -51,7 +51,7 @@ size_t			ft_strlcat(char *dest, char *src, size_t size)
 	}
 }
 
-char			*ft_strdup(const char *src)
+char	*ft_strdup(const char *src)
 {
 	size_t	i;
 	char	*mem;
@@ -69,7 +69,7 @@ char			*ft_strdup(const char *src)
 	return (mem);
 }
 
-size_t			ft_strlcpy(char *dest, const char *src, size_t size)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t	src_len;
 	size_t	i;
@@ -93,7 +93,7 @@ size_t			ft_strlcpy(char *dest, const char *src, size_t size)
 	return (src_len);
 }
 
-char			*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*newstr;
 	int		s1_len;

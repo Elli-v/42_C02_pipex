@@ -6,15 +6,15 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 22:35:36 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/06 22:03:33 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/08 14:16:20 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 
-void			clear_temp(void)
+void	clear_temp(void)
 {
-	char		**argv;
+	char	**argv;
 
 	argv = malloc(sizeof(char *) * 3);
 	argv[0] = "-f";
@@ -24,12 +24,12 @@ void			clear_temp(void)
 		execve("/bin/rm", (char *const *)argv, NULL);
 }
 
-void			heredoc_cmd(char **argv, char **envp)
+void	heredoc_cmd(char **argv, char **envp)
 {
-	int			pipefd[2];
-	pid_t		pid;
-	t_ec		ec_cmd;
-	int			status;
+	int		pipefd[2];
+	pid_t	pid;
+	t_ec	ec_cmd;
+	int	status;
 
 	pipe(pipefd);
 	pid = fork();
@@ -40,24 +40,24 @@ void			heredoc_cmd(char **argv, char **envp)
 			px_error("pid error\n");
 		redir_output(argv[5]);
 		connect_pipe(pipefd, 0);
-		execve_cmd(argv[4], &ec_cmd);
+		execve_cmd(argv[4], &ec_cmd, envp);
 	}
 	else if (pid == 0)
 	{
 		redir_input("./temp");
 		connect_pipe(pipefd, 1);
-		execve_cmd(argv[3], &ec_cmd);
+		execve_cmd(argv[3], &ec_cmd, envp);
 	}
 	else
 		px_error("error");
 }
 
-int				heredoc(char **argv)
+int	heredoc(char **argv)
 {
-	int			fd;
-	char		*buf;
-	int			i;
-	int			pipefd[2];
+	int		fd;
+	char	*buf;
+	int		i;
+	int		pipefd[2];
 
 	i = 1;
 	buf = 0;

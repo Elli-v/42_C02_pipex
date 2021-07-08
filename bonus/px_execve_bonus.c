@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   px_execve_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 18:07:48 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/07 20:11:17 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/08 14:15:21 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,9 @@ char	*ft_strstr(char *str, char *to_find)
 	i = -1;
 	if (to_find[0] == '\0')
 		return (str);
-	printf("10\n");
-	printf ("str = %s\n", to_find);
 	while (str[++i])
 	{
 		j = 0;
-		printf("i = %d\n", i);
 		while (str[i + j] != '\0' && str[i + j] == to_find[j])
 		{
 			if (to_find[j + 1] == '\0')
@@ -49,8 +46,6 @@ void	init_envp(t_ec *ec_cmd)
 	i = -1;
 	while (ec_cmd->temp[++i])
 	{
-		printf("i = %d\n", i);
-		temp = ft_strstr(ec_cmd->temp[i], path);
 		if (ft_strstr(ec_cmd->temp[i], path) != 0)
 		{
 			ec_cmd->envp_list = &ec_cmd->temp[i];
@@ -68,13 +63,12 @@ void	init_envp(t_ec *ec_cmd)
 
 void	ex_var(char **chunk)
 {
-	int		j;
-	int		max;
+	int	j;
+	int	max;
 
 	j = 0;
 	if (chunk[1] != 0)
 	{
-		printf("ㅇㅏㄴ냐루\n");
 		while (chunk[j++])
 			max = j;
 		j = 0;
@@ -91,29 +85,17 @@ void	ex_var(char **chunk)
 	}
 }
 
-void			init_ec_cmd(const char *cmd, t_ec *ec_cmd)
+void	init_ec_cmd(const char *cmd, t_ec *ec_cmd)
 {
-	char		**chunk;
+	char	**chunk;
 	int		ret;
 	int		i;
 
 	ret = 0;
-	printf("8\n");
-	printf("asdasdasd = %s\n", cmd);
-	ex_var(chunk);
-	printf("9\n");
-	init_envp(ec_cmd);
-	printf("10\n");
 	i = -1;
-	// ec_cmd->cmd[0] = ft_strjoin("/usr/local/bin/", chunk[0]);
-	// ec_cmd->cmd[1] = ft_strjoin("/usr/bin/", chunk[0]);
-	// ec_cmd->cmd[2] = ft_strjoin("/bin/", chunk[0]);
-	// ec_cmd->cmd[3] = ft_strjoin("/usr/sbin/", chunk[0]);
-	// ec_cmd->cmd[4] = ft_strjoin("/sbin/", chunk[0]);
-	// while (ec_cmd->envp_list[++i])
-	// {
-	// 	printf("%s\n", ec_cmd->envp_list[i]);
-	// }
+	chunk = ft_split(cmd, ' ');
+	ex_var(chunk);
+	init_envp(ec_cmd);
 	while (ec_cmd->envp_list[++i])
 	{
 		ret = access(ft_strjoin((char *)ec_cmd->envp_list[i], chunk[0]), F_OK);
@@ -123,22 +105,15 @@ void			init_ec_cmd(const char *cmd, t_ec *ec_cmd)
 			break ;
 		}
 	}
-	printf("11\n");
 	if (ec_cmd->envp_list[i] == (void *)0)
 		px_error("command not found");
 	ec_cmd->argv = (char *const *)chunk;
 	ec_cmd->envp = 0;
 }
 
-void			execve_cmd(const char *path, t_ec *ec_cmd)
+void	execve_cmd(const char *path, t_ec *ec_cmd, char **envp)
 {
-	int			i;
-
-	i = -1;
-	printf("7\n");
-	// printf ("temp = %s\n", ec_cmd->temp);
+	ec_cmd->temp = envp;
 	init_ec_cmd(path, ec_cmd);
-	// while (i < 5)
-		execve(ec_cmd->file, ec_cmd->argv, ec_cmd->envp);
-	px_error("command not found");
+	execve(ec_cmd->file, ec_cmd->argv, ec_cmd->envp);
 }
