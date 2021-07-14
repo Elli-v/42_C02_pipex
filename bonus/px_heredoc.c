@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   px_heredoc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 22:35:36 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/08 14:16:20 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/14 13:50:51 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	heredoc_cmd(char **argv, char **envp)
 	int		pipefd[2];
 	pid_t	pid;
 	t_ec	ec_cmd;
-	int	status;
+	int		status;
 
 	pipe(pipefd);
 	pid = fork();
@@ -66,7 +66,7 @@ int	heredoc(char **argv)
 	if (fd < 0)
 		px_error("error_temp_file");
 	write(STDOUT_FILENO, "heredoc> ", 9);
-	while ((i = px_gnl(0, &buf)) > 0)
+	while (px_gnl(0, &buf) > 0)
 	{
 		if (ft_strcmp(buf, argv[2]) == 0)
 		{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   px_utils_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 22:06:28 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/14 01:01:09 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/14 14:00:00 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 size_t	ft_strlen(const char *str)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (str[len] != '\0')
-	{
 		len++;
-	}
 	return (len);
 }
 
@@ -76,9 +74,13 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 
 	src_len = 0;
 	while (src[src_len] != '\0')
+	{
 		src_len++;
+	}
 	if (size == 0)
+	{
 		return (src_len);
+	}
 	i = 0;
 	while (src[i] != '\0' && i < (size - 1))
 	{
@@ -98,10 +100,16 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (!(s1) && !(s2))
 		return (NULL);
 	else if (!(s1) || !(s2))
-		return (!(s1) ? ft_strdup(s2) : ft_strdup(s1));
+	{
+		if (s1 != 0)
+			ft_strdup(s1);
+		else if (s1 == 0)
+			ft_strdup(s2);
+	}
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
-	if (!(newstr = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1))))
+	newstr = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
+	if (newstr == 0)
 		return (NULL);
 	ft_strlcpy(newstr, s1, s1_len + 1);
 	ft_strlcat(newstr + (s1_len), s2, s2_len + 1);

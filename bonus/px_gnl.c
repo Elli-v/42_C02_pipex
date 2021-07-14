@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   px_gnl.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 19:25:36 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/08 14:32:44 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/14 13:35:46 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int	onandon(char **backup, char **line, int save_str)
 
 	if (save_str < 0)
 		return (-1);
-	if (*backup && (idx_num = find_n(*backup)) >= 0)
+	idx_num = find_n(*backup);
+	if (*backup && (idx_num >= 0))
 		return (div_line(backup, line, idx_num));
 	else if (*backup)
 	{
@@ -73,11 +74,13 @@ int	px_gnl(int fd, char **line)
 
 	if ((fd < 0) || (line == 0) || (BUFFER_SIZE <= 0))
 		return (-1);
-	while ((save_str = read(fd, buffer, BUFFER_SIZE)) > 0)
+	save_str = read(fd, buffer, BUFFER_SIZE);
+	if (save_str > 0)
 	{
 		buffer[save_str] = '\0';
 		backup[fd] = ft_strjoin(backup[fd], buffer);
-		if ((idx_num = find_n(backup[fd])) >= 0)
+		idx_num = find_n(backup[fd]);
+		if (idx_num >= 0)
 			return (div_line(&backup[fd], line, idx_num));
 	}
 	return (onandon(&backup[fd], line, save_str));

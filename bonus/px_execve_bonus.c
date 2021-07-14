@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   px_execve_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 18:07:48 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/08 14:15:21 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/14 12:59:01 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,6 @@ void	init_envp(t_ec *ec_cmd)
 	char	*path;
 	int		i;
 	int		j;
-
-	char	*temp;
-	temp = 0;
 
 	path = "PATH";
 	i = -1;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   px_multi_pipe.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 03:59:27 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/14 01:01:16 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/14 13:53:51 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	last_cmd(t_px *px_cmd, t_ec *ec_cmd, char **envp, int i)
 	b_connect_pipe(px_cmd->pipefd, 0);
 	execve_cmd(px_cmd->cmd[i], ec_cmd, envp);
 }
-
 
 int	multi_pipe(int argc, char **argv, char **envp, t_px *px_cmd)
 {
@@ -56,13 +55,13 @@ int	multi_pipe(int argc, char **argv, char **envp, t_px *px_cmd)
 	return (0);
 }
 
-void	recursive_pipe(char **argv, t_px *px_cmd, char  **envp, int i)
+void	recursive_pipe(char **argv, t_px *px_cmd, char **envp, int i)
 {
 	pid_t	pid;
 	int		status;
 	t_ec	ec_cmd;
 
-	++i;   
+	++i;
 	if (i == px_cmd->pipe_cnt)
 		last_cmd(px_cmd, &ec_cmd, envp, i);
 	else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 22:00:23 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/14 12:54:16 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/14 12:57:23 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		heredoc(char **argv);
 void	hand_over(t_px *px_cmd);
 void	last_cmd(t_px *px_cmd, t_ec *ec_cmd, char **envp, int i);
 int		multi_pipe(int argc, char **argv, char **envp, t_px *px_cmd);
-void	recursive_pipe(char **argv, t_px *px_cmd, char  **envp, int i);
+void	recursive_pipe(char **argv, t_px *px_cmd, char **envp, int i);
 
 /*
 ** px_utils_bonus.c
