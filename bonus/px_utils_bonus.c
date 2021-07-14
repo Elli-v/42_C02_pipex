@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 22:06:28 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/08 14:17:29 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/14 01:01:09 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,9 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 
 	src_len = 0;
 	while (src[src_len] != '\0')
-	{
 		src_len++;
-	}
 	if (size == 0)
-	{
 		return (src_len);
-	}
 	i = 0;
 	while (src[i] != '\0' && i < (size - 1))
 	{

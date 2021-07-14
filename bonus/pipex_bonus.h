@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 22:00:23 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/08 14:32:40 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/14 12:54:16 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ typedef struct s_pipex {
 /*
 ** px_gnl.c
 */
-int	find_n(char *backup);
-int	div_line(char **backup, char **line, int idx_num);
-int	onandon(char **backup, char **line, int save_str);
-int	px_gnl(int fd, char **line);
+int		find_n(char *backup);
+int		div_line(char **backup, char **line, int idx_num);
+int		onandon(char **backup, char **line, int save_str);
+int		px_gnl(int fd, char **line);
 
 /*
 ** px_heredoc.c
@@ -57,10 +57,10 @@ int		heredoc(char **argv);
 /*
 ** px_multi_pipe.c
 */
-void hand_over(t_px *px_cmd);
-void last_cmd(t_px *px_cmd, t_ec *ec_cmd, char **envp, int i);
-int multi_pipe(int argc, char **argv, char **envp, t_px *px_cmd);
-void recursive_pipe(char **argv, t_px *px_cmd, char  **envp, int i);
+void	hand_over(t_px *px_cmd);
+void	last_cmd(t_px *px_cmd, t_ec *ec_cmd, char **envp, int i);
+int		multi_pipe(int argc, char **argv, char **envp, t_px *px_cmd);
+void	recursive_pipe(char **argv, t_px *px_cmd, char  **envp, int i);
 
 /*
 ** px_utils_bonus.c
