@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   px_utils_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soooh <soooh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 22:06:28 by soooh             #+#    #+#             */
-/*   Updated: 2021/07/14 14:00:00 by soooh            ###   ########.fr       */
+/*   Updated: 2021/07/14 14:36:22 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,10 +101,10 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (NULL);
 	else if (!(s1) || !(s2))
 	{
-		if (s1 != 0)
-			ft_strdup(s1);
-		else if (s1 == 0)
-			ft_strdup(s2);
+		if (!(s1))
+			return (ft_strdup(s2));
+		else
+			return (ft_strdup(s1));
 	}
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
